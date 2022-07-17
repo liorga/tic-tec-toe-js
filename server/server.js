@@ -88,9 +88,9 @@ io.on("connection", function (socket) {
     console.log(
       "player " +
         socket.id +
-        " make move data " +
+        " make move with sign " +
         data.symbol +
-        " " +
+        " in position " +
         data.position
     );
     if (!getOpponent(socket)) {
@@ -102,16 +102,16 @@ io.on("connection", function (socket) {
     console.log(
       "player " +
         socket.id +
-        " move made data " +
+        " move made with sign " +
         data.symbol +
-        " " +
+        " in position " +
         data.position
     );
     getOpponent(socket).emit("move.made", data);
   });
 
   socket.on("game.over", function (message) {
-    console.log(message + " Player: " + socket.id);
+    console.log("Player: " + socket.id + " " + message);
   });
 
   socket.on("disconnect", function () {
